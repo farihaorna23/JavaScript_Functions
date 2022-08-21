@@ -72,3 +72,33 @@ const quadrant = (x = 0, y = 0) => {
 // quadrant(0, -5); //y
 // quadrant(-4, -4);
 // quadrant(2, -3);
+
+// Exercise 4 Section
+console.log("EXERCISE 4:\n==========\n");
+const triangle = (side1 = 0, side2 = 0, side3 = 0) => {
+  if (
+    !(side1 + side2 > side3 && side2 + side3 > side1 && side3 + side1 > side2)
+  ) {
+    return console.log(
+      `Sides ${side1},${side2},${side3} is an invalid triangle`
+    );
+  }
+
+  //console.log(side1 === side2 && side2 === side3);
+
+  if ((side1 === side2) & (side2 === side3)) {
+    console.log(`Sides ${side1},${side2},${side3} is an equilateral triangle`);
+  } else if (side1 === side2 || side2 === side3 || side3 === side1) {
+    console.log(`Sides ${side1},${side2},${side3} is an isosceles triangle`);
+  } else {
+    console.log(`Sides ${side1},${side2},${side3} is a scalene triangle`);
+  }
+};
+// triangle(1, 2, 2); //isosceles
+// triangle(1, 1, 2); //invalid
+// triangle(3, 4, 6); //scalene
+// triangle(1, 3, 2); //invalid
+// triangle(2, 3, 1); //invalid
+// triangle(2, 1, 3); //invalid
+// triangle(2, 2, 2); //equilateral
+// triangle();
