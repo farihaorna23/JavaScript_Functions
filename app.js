@@ -102,3 +102,29 @@ const triangle = (side1 = 0, side2 = 0, side3 = 0) => {
 // triangle(2, 1, 3); //invalid
 // triangle(2, 2, 2); //equilateral
 // triangle();
+
+// Exercise 5 Section
+console.log("EXERCISE 5:\n==========\n");
+
+const dataPlan = (planLimit, day, useage) => {
+  let daysLeft = 30 - Number(day);
+  let dataLeft = Number(planLimit - useage);
+  let avgDataUseageLeft = dataLeft / daysLeft;
+  let avgDataUsedPerDay = useage / day;
+  let recommendedAvgDataUsedPerDay = planLimit / 30;
+
+  console.log(`${day} days used, ${daysLeft} days remaining.
+The recommended average data used per day for 30 days period is (${recommendedAvgDataUsedPerDay} GB/day).
+You are EXCEEDING your average daily use (${avgDataUsedPerDay} GB/day), continuiting this high useage, you'll exceed your data plan by ${day *
+    avgDataUsedPerDay -
+    dataLeft} GB.
+To stay below your plan, use no mare than ${dataLeft / (30 - day)}     `);
+  // console.log(`The recommended average data used per day for 30 days period is ${recommendedAvgDataUsedPerDay}`);
+  // console.log(` How much, on average, they can use per day for the rest of the month : ${avgDataUseageLeft} GB/day`);
+  // console.log(
+  //   `You are EXCEEDING your average daily use (${avgDataUsedPerDay} GB/day), continuiting this high useage, you'll exceed your data plan by ${(day * avgDataUsedPerDay) - dataLeft}`
+  // );
+  // console.log(`To stay below your plan, use no mare than ${dataLeft/(30 - day)}`);
+};
+
+dataPlan(100, 15, 56);
