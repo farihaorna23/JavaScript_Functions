@@ -113,18 +113,42 @@ const dataPlan = (planLimit, day, useage) => {
   let avgDataUsedPerDay = useage / day;
   let recommendedAvgDataUsedPerDay = planLimit / 30;
 
+  let isExceed = "";
+  let isHigh = "";
+  let rest_content = "";
+  let advice = "";
+
+  console.log(recommendedAvgDataUsedPerDay);
+  console.log(avgDataUsedPerDay);
+
+  if (avgDataUsedPerDay > recommendedAvgDataUsedPerDay) {
+    isExceed = isExceed + "EXCEEDING";
+    isHigh = isHigh + "high";
+    rest_content =
+      rest_content +
+      `continuiting this high useage, you'll exceed your data plan by ${day *
+        avgDataUsedPerDay -
+        dataLeft} GB.`;
+    advice =
+      advice +
+      `To stay below your plan, use no more than ${dataLeft /
+        (30 - day)} GB/per day`;
+  } else if (recommendedAvgDataUsedPerDay > avgDataUsedPerDay) {
+    isExceed = isExceed + "NOT EXCEEDING";
+    isHigh = isHigh + "low";
+    rest_content =
+      rest_content +
+      `you will have ${Math.abs(day * avgDataUsedPerDay - dataLeft)} GB. left `;
+    advice =
+      advice +
+      `To utilize all your data before time is up, use ${dataLeft /
+        (30 - day)} GB?per day`;
+  }
+
   console.log(`${day} days used, ${daysLeft} days remaining.
 The recommended average data used per day for 30 days period is (${recommendedAvgDataUsedPerDay} GB/day).
-You are EXCEEDING your average daily use (${avgDataUsedPerDay} GB/day), continuiting this high useage, you'll exceed your data plan by ${day *
-    avgDataUsedPerDay -
-    dataLeft} GB.
-To stay below your plan, use no mare than ${dataLeft / (30 - day)}     `);
-  // console.log(`The recommended average data used per day for 30 days period is ${recommendedAvgDataUsedPerDay}`);
-  // console.log(` How much, on average, they can use per day for the rest of the month : ${avgDataUseageLeft} GB/day`);
-  // console.log(
-  //   `You are EXCEEDING your average daily use (${avgDataUsedPerDay} GB/day), continuiting this high useage, you'll exceed your data plan by ${(day * avgDataUsedPerDay) - dataLeft}`
-  // );
-  // console.log(`To stay below your plan, use no mare than ${dataLeft/(30 - day)}`);
+You are ${isExceed} your average daily use (${avgDataUsedPerDay} GB/day), ${rest_content}
+${advice}`);
 };
 
 dataPlan(100, 15, 56);
